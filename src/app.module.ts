@@ -4,6 +4,10 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { ZNodeTBotModule } from './znodetbot/znodetbot.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(), ScheduleModule.forRoot(), ZNodeTBotModule],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    ScheduleModule.forRoot(),
+    ZNodeTBotModule,
+  ],
 })
 export class AppModule {}

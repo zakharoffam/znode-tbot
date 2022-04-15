@@ -8,11 +8,11 @@ import { ConfigService } from '@nestjs/config';
   imports: [
     TelegrafModule.forRootAsync({
       botName: 'ZNodeTBot',
-      useFactory: async (configService: ConfigService) => ({
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => ({
         token: configService.get<string>('TOKEN'),
         middlewares: [ZNodeTBotSessionMiddleware],
       }),
-      inject: [ConfigService],
     }),
   ],
   providers: [ZNodeTBotUpdate],
