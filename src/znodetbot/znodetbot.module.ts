@@ -3,6 +3,7 @@ import { ZNodeTBotUpdate } from './znodetbot.update';
 import { TelegrafModule } from 'nestjs-telegraf';
 import { ZNodeTBotSessionMiddleware } from './znodetbot-session.middleware';
 import { ConfigService } from '@nestjs/config';
+import { UsersService } from '../users/users.service';
 
 @Module({
   imports: [
@@ -15,6 +16,6 @@ import { ConfigService } from '@nestjs/config';
       }),
     }),
   ],
-  providers: [ZNodeTBotUpdate],
+  providers: [ZNodeTBotUpdate, UsersService],
 })
 export class ZNodeTBotModule {}
